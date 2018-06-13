@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        <%= title %>
+    </title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>
+            <%= title %>
+        </h1>
+        <section class="row add">
+            <div class="col-md-12">
+                <form action="/add" method="POST">
+                    <legend>Agregar Tarea</legend>
+                    <div class="form-group">  
+                        <label for="titulo">Título</label>
+                        <input type="text" id="titulo" class="form-control" name="titulo">
+                    </div>
+                    <div class="form-group">  
+                        <label for="descripcion">Descripción</label>
+                        <input type="text" id="descripcion" class="form-control" name="descripcion">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Agregar</button>
+                </form>
+            </div>
+        </section>
+        <hr>
+        <section class="row listado">
+           
+            <table class="table col-md-12">
+                <thead>
+                    <tr>
+                        <!-- <th>#</th> -->
+                        <th>Título</th>
+                        <th>Descripción</th>
+                        <th>Operaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                
+                <% lista.forEach((elem)=>{ %>
+                    <tr>
+                        <!-- <td></td> -->
+                        <td><%= elem.titulo %></td>
+                        <td><%= elem.descripcion %></td>
+                        <td>
+                            <a 
+                            class=" <%= (elem.status) ? 'btn btn-success' : 'btn btn-dark' %>"
+                            href="/turn/<%= elem._id %>">Done</a>
+                            <a href="/delete/<%= elem._id %>" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                <% }); %>
+                </tbody>
+            </table>
+           
+        </section>
+    </div>
+</body>
+
+</html>
