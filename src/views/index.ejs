@@ -53,10 +53,10 @@
                         <td><%= elem.titulo %></td>
                         <td><%= elem.descripcion %></td>
                         <td>
-                            <a 
-                            class=" <%= (elem.status) ? 'btn btn-success' : 'btn btn-dark' %>"
-                            href="/turn/<%= elem._id %>">Done</a>
+                            <a class=" <%= (elem.status) ? 'btn btn-success' : 'btn btn-dark' %>" 
+                                href="/turn/<%= elem._id %>">Done</a>
                             <a href="/delete/<%= elem._id %>" class="btn btn-danger">Delete</a>
+                            <a href="/update/<%= elem._id %>" class="btn btn-info">Edit</a>
                         </td>
                     </tr>
                 <% }); %>
